@@ -1,4 +1,5 @@
 // Application hooks that run for every service
+const { cleanResponse } = require('./hooks/cleanResponse')
 
 module.exports = {
   before: {
@@ -12,7 +13,7 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [cleanResponse],
     find: [],
     get: [],
     create: [],

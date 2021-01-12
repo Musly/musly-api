@@ -8,6 +8,7 @@
   },
   "authentication": {
     "entity": "user",
+    "entityId": "id",
     "service": "users",
     "secret": "3tm0pJfK1W/tP9AY/nMQz+mFzn8=",
     "authStrategies": [
@@ -18,7 +19,7 @@
       "header": {
         "type": "access"
       },
-      "audience": "https://yourdomain.com",
+      "audience": "https://in.musly.app",
       "issuer": "musly",
       "algorithm": "HS256",
       "expiresIn": "30d"
