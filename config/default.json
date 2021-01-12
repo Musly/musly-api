@@ -8,7 +8,6 @@
   },
   "authentication": {
     "entity": "user",
-    "entityId": "id",
     "service": "users",
     "secret": "3tm0pJfK1W/tP9AY/nMQz+mFzn8=",
     "authStrategies": [
