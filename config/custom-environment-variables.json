@@ -1,0 +1,7 @@
+{
+  "port": "MUSLY_API_PORT",
+  "authentication": {
+    "secret": "MUSLY_API_TOKEN_SECRET"
+  },
+  "mongodb": "MUSLY_API_DB_URL"
+}

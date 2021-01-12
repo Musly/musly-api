@@ -1,0 +1,32 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "3tm0pJfK1W/tP9AY/nMQz+mFzn8=",
+    "authStrategies": [
+      "jwt",
+      "local"
+    ],
+    "jwtOptions": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "issuer": "musly",
+      "algorithm": "HS256",
+      "expiresIn": "30d"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "mongodb": "mongodb+srv://musly-db-agent:LODc1YAhLP69jih5@muslystagecluster.xqfgw.mongodb.net/musly"
+}
