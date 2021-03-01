@@ -1,16 +1,16 @@
-function convertId({ __v, ...rest }) {
-  return rest
+function convertId ({ __v, ...rest }) {
+  return rest;
 }
 
-exports.removeVersion = function removeVersion(context) {
+exports.removeVersion = function removeVersion (context) {
   if (context.data) {
     if (Array.isArray(context.data)) {
       context.data = context.data.reduce((acc, item) => ([
         ...acc,
         convertId(item),
-      ]), [])
+      ]), []);
     } else {
-      context.data = convertId(context.data)
+      context.data = convertId(context.data);
     }
   }
 
@@ -18,10 +18,10 @@ exports.removeVersion = function removeVersion(context) {
     context.result.data = context.result.data.reduce((acc, item) => ([
       ...acc,
       convertId(item),
-    ]), [])
+    ]), []);
   } else {
-    context.result = convertId(context.result)
+    context.result = convertId(context.result);
   }
 
-  return context
-}
+  return context;
+};

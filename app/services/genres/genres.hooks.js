@@ -1,5 +1,5 @@
-const { authenticate } = require('@feathersjs/authentication').hooks
-const { cleanResponse } = require('../../hooks/cleanResponse')
+const { authenticate } = require('@feathersjs/authentication').hooks;
+const { cleanResponse } = require('../../hooks/cleanResponse');
 
 module.exports = {
   before: {
@@ -31,4 +31,4 @@ module.exports = {
     patch: [],
     remove: [],
   },
-}
+};

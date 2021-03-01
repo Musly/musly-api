@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const logger = require('./logger')
+const mongoose = require('mongoose');
+const logger = require('./logger');
 
 module.exports = (app) => {
   mongoose.connect(
@@ -12,12 +12,12 @@ module.exports = (app) => {
     }
   )
     .then(() => {
-      console.log(`Connected to the database at ${process.env.MUSLY_API_DB_URL}`)
+      console.log(`Connected to the database at ${process.env.MUSLY_API_DB_URL}`);
     })
     .catch((err) => {
-      logger.error(err)
-      process.exit(1)
-    })
+      logger.error(err);
+      process.exit(1);
+    });
 
-  app.set('mongooseClient', mongoose)
-}
+  app.set('mongooseClient', mongoose);
+};

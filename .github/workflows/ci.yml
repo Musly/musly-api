@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{secrets.CI_TOKEN}}
+
+      - name: Set up Node@v14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache eslint
+        uses: actions/cache@v2
+        id: eslint-cache
+        with:
+          path: '**/.eslintcache'
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/.eslintcache') }}
+
+      - name: Lint
+        env:
+          GITHUB_TOKEN: ${{secrets.CI_TOKEN}}
+          GITHUB_USER: ${{secrets.CI_USER}}
+          NODE_AUTH_TOKEN: ${{secrets.CI_TOKEN}}
+        run: |
+          git config --global credential.helper store
+          echo "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+          yarn install --frozen-lockfile
+          yarn lint --cache --quiet
+          rm -rf ~/.git-credentials
+          unset GITHUB_TOKEN
+          unset GITHUB_USER
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{secrets.CI_TOKEN}}
+
+      - name: Set up Node@v14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache eslint
+        uses: actions/cache@v2
+        id: eslint-cache
+        with:
+          path: '**/.eslintcache'
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/.eslintcache') }}
+
+      - name: Lint
+        env:
+          GITHUB_TOKEN: ${{secrets.CI_TOKEN}}
+          GITHUB_USER: ${{secrets.CI_USER}}
+          NODE_AUTH_TOKEN: ${{secrets.CI_TOKEN}}
+        run: |
+          git config --global credential.helper store
+          echo "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+          yarn install --frozen-lockfile
+          yarn test --ci
+          rm -rf ~/.git-credentials
+          unset GITHUB_TOKEN
+          unset GITHUB_USER

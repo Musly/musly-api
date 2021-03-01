@@ -1,19 +1,19 @@
 // Initializes the `genres` service on path `/genres`
-const { Genres } = require('./genres.class')
-const createModel = require('../../models/genres.model')
-const hooks = require('./genres.hooks')
+const { Genres } = require('./genres.class');
+const createModel = require('../../models/genres.model');
+const hooks = require('./genres.hooks');
 
 module.exports = (app) => {
   const options = {
     Model: createModel(app),
     paginate: app.get('paginate'),
-  }
+  };
 
   // Initialize our service with any options it requires
-  app.use('/genres', new Genres(options, app))
+  app.use('/genres', new Genres(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('genres')
+  const service = app.service('genres');
 
-  service.hooks(hooks)
-}
+  service.hooks(hooks);
+};
