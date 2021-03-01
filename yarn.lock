@@ -1184,10 +1184,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@musly/utils-base@^0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@musly/utils-base/0.1.1/4654254692901b833cfd103b95d78b9ad0bb1fd36584d0cb15c732ac29ef98b6#05b37a2b2f068a86cdebb127dcbc57fd959fe296"
-  integrity sha1-BbN6Ky8GiobN67En3LxX/ZWf4pY=
+"@musly/utils-base@^0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@musly/utils-base/0.1.2/24e3a2c7bffd2a5db609fe3408fb031c452c20c0afe31383e08f153cbc14c8f3#b5787f2051f5007c77cde2083f81db25fc6091f8"
+  integrity sha1-tXh/IFH1AHx3zeIIP4HbJfxgkfg=
   dependencies:
     eslint-config-airbnb-base "^14.2.1"
     eslint-plugin-import "^2.22.1"
