@@ -1,6 +1,6 @@
-const { authenticate } = require('@feathersjs/authentication').hooks
-const { hashPassword, protect } = require('@feathersjs/authentication-local').hooks
-const { removeVersion } = require('../../hooks/removeVersion')
+const { authenticate } = require('@feathersjs/authentication').hooks;
+const { hashPassword, protect } = require('@feathersjs/authentication-local').hooks;
+const { removeVersion } = require('../../hooks/removeVersion');
 
 module.exports = {
   before: {
@@ -32,4 +32,4 @@ module.exports = {
     patch: [],
     remove: [],
   },
-}
+};
