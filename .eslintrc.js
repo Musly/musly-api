@@ -1,1 +1,1 @@
-module.exports = require('@musly/utils/eslint-config/main');
+module.exports = require('@musly/utils-base/eslint-config');
