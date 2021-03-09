@@ -11,7 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/core": "^7.13.8",
+    "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@feathersjs/authentication": "^4.5.11",
     "@feathersjs/authentication-local": "^4.5.11",
